@@ -2,8 +2,12 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/spekkio-bot/spekkio-cli/src/config"
 )
 
 func main() {
-	fmt.Println("Spekkio, the Master of War, comes to GitHub with a CLI!")
+	config := &config.Config{}
+	config.Initialize()
+	fmt.Println(config.ServerUrl)
 }
