@@ -8,8 +8,19 @@ import (
 
 type CliApp struct {
 	Config *config.Config
+	Args   []string
 }
 
 func (c *CliApp) Initialize() {
 	c.Config.Initialize()
+}
+
+func (c *CliApp) Run() {
+	if c.SelectedPing() {
+		fmt.Println("ping selected!")
+	} else if c.SelectedDefault() {
+		fmt.Println("i am the master of war!")
+	} else {
+		fmt.Println("err: invalid args!")
+	}
 }
