@@ -7,8 +7,9 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// TODO: Replace with real server URL when core app goes live
-const DEFAULT_SERVER_URL = "http://localhost:2000"
+const (
+	DEFAULT_SERVER_URL = "https://5ila6fw37k.execute-api.us-west-1.amazonaws.com/api"
+)
 
 type Config struct {
 	ServerUrl string

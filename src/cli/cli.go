@@ -17,7 +17,7 @@ func (c *CliApp) Initialize() {
 
 func (c *CliApp) Run() {
 	if c.SelectedPing() {
-		fmt.Println("ping selected!")
+		c.Ping()
 	} else if c.SelectedDefault() {
 		fmt.Println("i am the master of war!")
 	} else {
