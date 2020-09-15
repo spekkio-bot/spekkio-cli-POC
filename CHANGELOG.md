@@ -7,6 +7,8 @@ Version log for Spekkio CLI.
 - Added shell script to build app
 ### Modified
 - Changed config to parse / initialize a spekkiofile instead of .env
+### Removed
+- Removed `.env.example`
 
 ## 0.0.0
 ### New
