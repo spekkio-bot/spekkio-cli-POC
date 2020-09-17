@@ -5,6 +5,8 @@ Version log for Spekkio CLI.
 ## 0.1.1
 ### New
 - Added unit testing
+### Modified
+- Add testing option to shell script
 
 ## 0.1.0
 ### New

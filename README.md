@@ -21,11 +21,15 @@ Follow these steps to build and install Spekkio CLI:
 
 ### `./build.sh`
 
-Running `build.sh` with no arguments will build a binary to the `bin/` directory. You can then navigate to `bin/` and run `./spekkio`.
+Running `build.sh` with no arguments will run tests and, if all tests are successful, build a binary to the `bin/` directory. You can then navigate to `bin/` and run `./spekkio`.
 
 ### `./build.sh prod`, `./build.sh p`
 
-This will build a binary to `/usr/local/bin`. You will then be able to run Spekkio globally with `spekkio`.
+This will build a binary to `/usr/local/bin` after running and passing all tests. You will then be able to run Spekkio globally with `spekkio`.
+
+### `./build.sh dryrun`, `./build.sh test`, `./build.sh d`, `./build.sh t`
+
+This will run tests without building an executable.
 
 ## License
 
