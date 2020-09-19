@@ -13,3 +13,10 @@ func (c *CliApp) SelectedPing() bool {
 	}
 	return false
 }
+
+func (c *CliApp) SelectedConfigure() bool {
+	if len(c.Args) == 2 && c.Args[1] == "configure" {
+		return true
+	}
+	return false
+}
