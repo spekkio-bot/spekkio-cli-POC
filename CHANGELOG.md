@@ -2,6 +2,13 @@
 
 Version log for Spekkio CLI.
 
+## 0.1.2
+### New
+- Added option to configure spekkiofile
+- Added GitHub token to spekkiofile
+### Modified
+- Renamed config to utils and exported some previously unexported utilities
+
 ## 0.1.1
 ### New
 - Added unit testing

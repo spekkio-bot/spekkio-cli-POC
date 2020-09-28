@@ -3,12 +3,12 @@ package cli
 import (
 	"testing"
 
-	"github.com/spekkio-bot/spekkio-cli/src/config"
+	"github.com/spekkio-bot/spekkio-cli/src/utils"
 )
 
 func TestNoArgs(t *testing.T) {
 	c := CliApp{
-		Config: &config.Config{
+		Config: &utils.Config{
 			ServerUrl: "shouldWork",
 		},
 		Args: []string{"test"},
@@ -19,7 +19,7 @@ func TestNoArgs(t *testing.T) {
 
 func TestInvalidArgs(t *testing.T) {
 	c := CliApp{
-		Config: &config.Config{
+		Config: &utils.Config{
 			ServerUrl: "shouldAlsoWork",
 		},
 		Args: []string{"this", "is", "invalid"},
