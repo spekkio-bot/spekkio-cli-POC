@@ -6,6 +6,8 @@ Version log for Spekkio CLI.
 ### New
 - Added option to configure spekkiofile
 - Added GitHub token to spekkiofile
+### Modified
+- Renamed config to utils and exported some previously unexported utilities
 
 ## 0.1.1
 ### New

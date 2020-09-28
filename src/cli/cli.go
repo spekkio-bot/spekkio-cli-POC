@@ -3,11 +3,11 @@ package cli
 import (
 	"fmt"
 
-	"github.com/spekkio-bot/spekkio-cli/src/config"
+	"github.com/spekkio-bot/spekkio-cli/src/utils"
 )
 
 type CliApp struct {
-	Config *config.Config
+	Config *utils.Config
 	Args   []string
 }
 

@@ -1,4 +1,4 @@
-package config
+package utils
 
 import (
 	"fmt"
@@ -12,27 +12,32 @@ const (
 	DEFAULT_SERVER_URL = "https://5ila6fw37k.execute-api.us-west-1.amazonaws.com/api"
 )
 
+// Config defines an app's configuration
 type Config struct {
 	ServerUrl string
 }
 
+// Initialize will read from spekkiofile and initialize the Config object's values
+// If no spekkiofile is present, it will create one
 func (c *Config) Initialize() {
-	configfile, err := ioutil.ReadFile(spekkiofilePath())
+	configfile, err := ioutil.ReadFile(SpekkiofilePath())
 	if err != nil {
 		fmt.Printf("no spekkiofile file found, creating spekkiofile and using defaults\n")
 		initSpekkiofile()
 		c.UseDefault()
 	} else {
-		configmap := parseSpekkiofile(configfile)
+		configmap := ParseSpekkiofile(configfile)
 		c.ServerUrl = configmap["SERVER_URL"]
 	}
 }
 
+// UseDefault will apply the default constant values to the Config object
 func (c *Config) UseDefault() {
 	c.ServerUrl = DEFAULT_SERVER_URL
 }
 
-func parseSpekkiofile(configfileBytes []byte) map[string]string {
+// ParseSpekkiofile parses spekkiofile into a map of string-string key-value pairs
+func ParseSpekkiofile(configfileBytes []byte) map[string]string {
 	configfile := string(configfileBytes)
 	configmap := make(map[string]string)
 
@@ -48,24 +53,26 @@ func parseSpekkiofile(configfileBytes []byte) map[string]string {
 	return configmap
 }
 
-func spekkiofilePath() string {
+// SpekkiofilePath returns the directory path of spekkiofile
+func SpekkiofilePath() string {
 	configpath, _ := os.UserHomeDir()
 	configpath += "/.spekkio/spekkiofile"
 	return configpath
 }
 
-func spekkiofileDirPath() string {
+// SpekkiofileDirPath returns the directory path of the folder containing spekkiofile
+func SpekkiofileDirPath() string {
 	configdirpath, _ := os.UserHomeDir()
 	configdirpath += "/.spekkio"
 	return configdirpath
 }
 
 func initSpekkiofile() {
-	err := os.Mkdir(spekkiofileDirPath(), 0755)
+	err := os.Mkdir(SpekkiofileDirPath(), 0755)
 	if err != nil {
 		log.Fatal(err)
 	}
-	_, err = os.Create(spekkiofilePath())
+	_, err = os.Create(SpekkiofilePath())
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -73,7 +80,7 @@ func initSpekkiofile() {
 	contents = append(contents, []byte("SERVER_URL=")...)
 	contents = append(contents, []byte(DEFAULT_SERVER_URL)...)
 	contents = append(contents, []byte("\n")...)
-	err = ioutil.WriteFile(spekkiofilePath(), contents, 0644)
+	err = ioutil.WriteFile(SpekkiofilePath(), contents, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}

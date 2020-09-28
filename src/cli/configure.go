@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"fmt"
+	//"fmt"
 )
 
 func (c *CliApp) Configure() {
