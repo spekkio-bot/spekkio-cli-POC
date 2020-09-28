@@ -20,13 +20,13 @@ type Config struct {
 // Initialize will read from spekkiofile and initialize the Config object's values
 // If no spekkiofile is present, it will create one
 func (c *Config) Initialize() {
-	configfile, err := ioutil.ReadFile(SpekkiofilePath())
+	_, err := ioutil.ReadFile(SpekkiofilePath())
 	if err != nil {
 		fmt.Printf("no spekkiofile file found, creating spekkiofile and using defaults\n")
 		initSpekkiofile()
 		c.UseDefault()
 	} else {
-		configmap := ParseSpekkiofile(configfile)
+		configmap := ParseSpekkiofile()
 		c.ServerUrl = configmap["SERVER_URL"]
 	}
 }
@@ -37,7 +37,8 @@ func (c *Config) UseDefault() {
 }
 
 // ParseSpekkiofile parses spekkiofile into a map of string-string key-value pairs
-func ParseSpekkiofile(configfileBytes []byte) map[string]string {
+func ParseSpekkiofile() map[string]string {
+	configfileBytes, _ := ioutil.ReadFile(SpekkiofilePath())
 	configfile := string(configfileBytes)
 	configmap := make(map[string]string)
 
